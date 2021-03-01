@@ -1,3 +1,22 @@
+INFORMACIÓN IMPORTANTE:
+
+- El login se encuentra funcionando con información falsa, para poder ingresar al dashboard se tiene que ingresar las siguientes credenciales:
+
+email: admin@admin.com
+password: 123456
+
+con estas credenciales es con las cuales podrá acceder al dashboard.
+
+Y para poder arrancar el proyecto se tiene que hacer lo que dice las instrucciones.
+
+1. Clonar el proyecto
+
+2. Despues de clonado, abrir el IDE de su preferencia e escribir el siguiente comando: npm install
+
+3. Luego que se instalen todas las dependencias debe escribir el siguiente comando: npm run start
+
+con esto ya tendria todo lo necesario y el proyecto corriendo de manera local.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
