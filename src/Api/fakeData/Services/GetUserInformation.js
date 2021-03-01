@@ -23,4 +23,3 @@ export const getUserDashboardInformation = async (userID) => {
   const data = await req.json();
   return await userInformation;
 };
-//jsonplaceholder.typicode.com/users/1
