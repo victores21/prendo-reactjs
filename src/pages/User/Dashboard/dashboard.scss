@@ -1,0 +1,817 @@
+/* external css: flickity.css */
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+.carousel {
+  background: #eee;
+}
+
+.carousel-cell {
+  width: 28%;
+  height: 200px;
+  margin-right: 10px;
+  background: #8c8;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-cell.is-selected {
+  background: #ed2;
+}
+
+/* cell number */
+.carousel-cell:before {
+  display: block;
+  text-align: center;
+  content: counter(carousel-cell);
+  line-height: 200px;
+  font-size: 80px;
+  color: white;
+}
+
+img {
+  width: 100%;
+}
+body {
+  background: #f4f5f7;
+}
+.page-wrappers {
+  display: grid;
+  grid-template-areas:
+    "sidebar navbar"
+    "sidebar content";
+  //   grid-template-columns: 0.3fr 1fr;
+  .navbar-component {
+    grid-area: navbar;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    img {
+      width: 50px;
+    }
+    background: #fff;
+    display: flex;
+    .search-bar {
+      width: 50%;
+      .search-input-container {
+        display: flex;
+      }
+    }
+
+    .user-notification {
+      display: flex;
+      width: 50%;
+      justify-content: flex-end;
+      align-items: center;
+      .notification-icons {
+        display: flex;
+        padding-right: 1rem;
+
+        .notification-card-icon {
+          padding: 0 0.5rem;
+
+          .notification-card-icon--icon {
+            fill: #8395a7;
+          }
+        }
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        .user-profile-avatar-card {
+          .user-profile-avatar-card--image {
+            padding: 0 1rem;
+            .user__image {
+              border-radius: 100%;
+              width: 40px;
+              height: 40px;
+              object-fit: cover;
+            }
+          }
+        }
+        .user-profile-name {
+          align-items: center;
+          .user-profile-name__text {
+            color: #576574;
+            font-size: 14px;
+            font-weight: 600;
+          }
+          .user-profile-dropdown {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .sidebar-component {
+    grid-area: sidebar;
+
+    transition: 0.8s ease;
+
+    .menu-item--icon__icon {
+      width: 20px;
+
+      position: relative;
+      top: 5px;
+      color: #fff;
+    }
+
+    //react-sidenav
+    .sidenavbar_toggle {
+      background: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+    }
+    .sidenav---navicon---3gCRo span svg {
+      fill: #8395a7;
+    }
+    .sidenav---sidenav-nav---3tvij > .sidenav---sidenav-navitem---uwIJ- {
+      padding: 0 0.7rem;
+    }
+    .sidenav---sidenav---_2tBP {
+      background: #fff;
+    }
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-
+      > .sidenav---navitem---9uL5T
+      .sidenav---navicon---3gCRo
+      > *,
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-
+      > .sidenav---navitem---9uL5T
+      .sidenav---navtext---1AE_f
+      > * {
+      color: #222f3e;
+      position: relative;
+      right: 3px;
+      top: 2px;
+    }
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-
+      > .sidenav---navitem---9uL5T
+      .sidenav---navicon---3gCRo,
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-
+      > .sidenav---navitem---9uL5T
+      .sidenav---navtext---1AE_f {
+      color: #222f3e;
+    }
+    //selected
+    .sidenav---selected---1EK3y
+      .sidenav---navitem---9uL5T
+      .sidenav---navicon---3gCRo
+      span
+      svg {
+      fill: #fff;
+    }
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u
+      > .sidenav---navitem---9uL5T {
+      background: #6c5dd3;
+      border-radius: 15px;
+
+      .sidenav---navtext---1AE_f {
+        color: #fff;
+      }
+    }
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-.sidenav---highlighted---oUx9u
+      > .sidenav---navitem---9uL5T::after,
+    .sidenav---sidenav-nav---3tvij
+      > .sidenav---sidenav-navitem---uwIJ-:hover.sidenav---highlighted---oUx9u
+      > .sidenav---navitem---9uL5T::after {
+      border-radius: 15px;
+    }
+  }
+  .content-component {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-area: content;
+    padding: 1rem;
+    .content {
+      max-width: 800px;
+    }
+
+    .content-header {
+      .salute {
+        margin-bottom: 2rem;
+        .salute__text {
+          font-size: 24px;
+          color: #222f3e;
+        }
+      }
+
+      .content-bottom-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .content-title {
+          .content-title__text {
+            font-size: 40px;
+            font-weight: bold;
+            color: #222f3e;
+          }
+        }
+        .calendar-card {
+          display: flex;
+          .calendar-icon {
+            position: relative;
+            .calendar--image {
+              width: 50px;
+            }
+            .calendar--date {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              /* width: 50px; */
+              position: absolute;
+              top: 9px;
+              left: 12px;
+              .calendar--day {
+                font-weight: bold;
+                font-size: 22px;
+              }
+              .calendar--month {
+                font-weight: bold;
+                font-size: 10px;
+                position: relative;
+                bottom: 12px;
+              }
+            }
+          }
+
+          .courses-information {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 0.7rem;
+
+            .course-information__title {
+              color: #ee5253;
+              font-size: 14px;
+              font-weight: bold;
+            }
+            .course-information__helper {
+              font-size: 12px;
+              color: #222f3e;
+            }
+          }
+        }
+      }
+    }
+
+    .course-information-cards {
+      background: #fff;
+      .left {
+        display: flex;
+        .course-information-card {
+          width: 25%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 2rem 0;
+          .course-information-card--title {
+            .course-information-card--title__text {
+              font-weight: 600px;
+              font-size: 40px;
+              color: #292930;
+            }
+          }
+          .course-information-card--description {
+            text-align: center;
+            .course-information-card--description__text {
+              color: #222f3e;
+              font-size: 14px;
+              max-width: 100px;
+            }
+          }
+        }
+      }
+      .right {
+        border-top: 1px solid #c8d6e5;
+        text-align: center;
+        padding-top: 2rem;
+        .course-information-card-right {
+          .course-information-card-right--title {
+            .course-information-card-right--title__text {
+              color: #222f3e;
+              font-size: 14px;
+            }
+          }
+          .course-information-card-right--media {
+            .course_infomration-card-right__image {
+              width: 137px;
+            }
+          }
+        }
+      }
+    }
+
+    .earning-options {
+      margin-top: 2rem;
+      .earnings-stats {
+        padding: 2rem;
+        background: #fff;
+        .earning-stats-header {
+          padding-bottom: 1.5rem;
+          .earning-stats-title__text {
+            color: #292930;
+            font-size: 20px;
+          }
+        }
+
+        .earning-main-content {
+          display: flex;
+          .earning-amount {
+            width: 20%;
+            position: relative;
+            .earning-amount__text {
+              font-size: 35px;
+              color: #222f3e;
+            }
+            .earning-amount__helper {
+              color: #707070;
+              font-weight: bold;
+              font-size: 12px;
+              position: relative;
+              bottom: 4px;
+              left: 11px;
+            }
+          }
+          .earning-chart {
+            width: 80%;
+            padding: 0 2rem;
+            .date {
+              text-align: end;
+            }
+          }
+        }
+
+        .earning-per-month {
+          .earning-per-month-card {
+            padding: 1rem;
+            height: 108px;
+            width: 180px;
+            border: 2px solid #c8d6e5;
+            border-radius: 20px;
+            .earning-per-month--title {
+              .earning-per-month__text {
+                color: #2e86de;
+                font-weight: bold;
+                font-size: 12px;
+              }
+            }
+
+            .earning-per-month--amount {
+              .earning-per-month__text {
+                color: #292929;
+                font-size: 30px;
+                font-weight: 600;
+              }
+            }
+          }
+        }
+      }
+
+      .settings-cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 2rem;
+
+        .setting-card {
+          padding: 1rem;
+          margin: 1rem;
+          background: #fff;
+          width: 226px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          border-radius: 20px;
+
+          .setting-card--media {
+            width: 40%;
+            .setting-card__image {
+              width: 100%;
+              height: 51px;
+              object-fit: contain;
+            }
+          }
+          .special-tus-cursos {
+            position: relative;
+            right: 8px;
+          }
+          .setting-card--title {
+            padding-left: 0.5rem;
+            width: auto;
+            .setting-card__text {
+              color: #707070;
+              font-size: 14px;
+              font-weight: 400;
+            }
+          }
+        }
+      }
+    }
+
+    .row {
+      margin-top: 1rem;
+      .row--title {
+        margin-bottom: 2rem;
+        .row__text {
+          color: #4a545e;
+          font-size: 40px;
+        }
+      }
+
+      .news-cards {
+        .news-card {
+          margin: 2rem 0;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          .news-card--media {
+            width: 50%;
+            .news-card--media__item {
+              width: 100%;
+            }
+          }
+
+          .news-card-information {
+            width: 50%;
+            .news-card-information--title {
+              margin-bottom: 1rem;
+              .news_card_information__text {
+                color: #292930;
+                font-size: 24px;
+                font-weight: 500;
+              }
+            }
+
+            .news-card-information--description {
+              .news-card-information__text {
+                color: #292930;
+                font-size: 14px;
+                line-height: 22px;
+              }
+            }
+
+            .news-card-button {
+              margin-top: 2rem;
+              .btn {
+                padding: 1rem 5rem;
+                background: #fff;
+                border-radius: 40px;
+                color: #11142d;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-wrappers {
+    display: grid;
+    grid-template-areas:
+      "sidebar navbar"
+      "sidebar content";
+    //   grid-template-columns: 0.3fr 1fr;
+
+    .content-component {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      grid-area: content;
+      padding: 2rem;
+      .content {
+        max-width: 1366px;
+      }
+
+      .content-header {
+        .salute {
+          margin-bottom: 0rem;
+          .salute__text {
+            font-size: 24px;
+            color: #222f3e;
+          }
+        }
+
+        .content-bottom-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 2rem;
+          .content-title {
+            .content-title__text {
+              font-size: 40px;
+              font-weight: bold;
+              color: #222f3e;
+            }
+          }
+          .calendar-card {
+            display: flex;
+            .calendar-icon {
+              position: relative;
+              .calendar--image {
+                width: 50px;
+              }
+              .calendar--date {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                /* width: 50px; */
+                position: absolute;
+                top: 9px;
+                left: 12px;
+                .calendar--day {
+                  font-weight: bold;
+                  font-size: 22px;
+                }
+                .calendar--month {
+                  font-weight: bold;
+                  font-size: 10px;
+                  position: relative;
+                  bottom: 12px;
+                }
+              }
+            }
+
+            .courses-information {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              padding-left: 0.7rem;
+
+              .course-information__title {
+                color: #ee5253;
+                font-size: 14px;
+                font-weight: bold;
+              }
+              .course-information__helper {
+                font-size: 12px;
+                color: #222f3e;
+              }
+            }
+          }
+        }
+      }
+
+      .course-information-cards {
+        background: #fff;
+        display: flex;
+        max-width: 992px;
+        .left {
+          display: flex;
+          width: 67%;
+          .course-information-card {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 0;
+            .course-information-card--title {
+              .course-information-card--title__text {
+                font-weight: 600px;
+                font-size: 40px;
+                color: #292930;
+              }
+            }
+            .course-information-card--description {
+              text-align: center;
+              .course-information-card--description__text {
+                color: #222f3e;
+                font-size: 14px;
+                max-width: 100px;
+              }
+            }
+          }
+        }
+        .right {
+          border-top: none;
+          text-align: center;
+          padding-top: 0;
+          width: 38%;
+          display: flex;
+          justify-content: center;
+          position: relative;
+
+          .border {
+            border-left: 1px solid #c8d6e5;
+            position: absolute;
+            left: 0;
+            height: 70%;
+            top: 26px;
+          }
+          .course-information-card-right {
+            display: flex;
+            align-items: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            .course-information-card-right--title {
+              .course-information-card-right--title__text {
+                color: #222f3e;
+                font-size: 14px;
+              }
+            }
+            .course-information-card-right--media {
+              .course_infomration-card-right__image {
+                width: 137px;
+              }
+            }
+          }
+        }
+      }
+
+      .earning-options {
+        margin-top: 2rem;
+        display: flex;
+        max-width: 992px;
+        .earnings-stats {
+          width: 70%;
+          padding: 2rem;
+          background: #fff;
+          .earning-stats-header {
+            padding-bottom: 1.5rem;
+            .earning-stats-title__text {
+              color: #292930;
+              font-size: 20px;
+            }
+          }
+
+          .earning-main-content {
+            display: flex;
+            .earning-amount {
+              width: 20%;
+              position: relative;
+              .earning-amount__text {
+                font-size: 35px;
+                color: #222f3e;
+              }
+              .earning-amount__helper {
+                color: #707070;
+                font-weight: bold;
+                font-size: 12px;
+                position: relative;
+                bottom: 4px;
+                left: 11px;
+              }
+            }
+            .earning-chart {
+              width: 80%;
+              padding: 0 2rem;
+              .date {
+                text-align: end;
+              }
+            }
+          }
+
+          .earning-per-month {
+            .earning-per-month-card {
+              padding: 1rem;
+              height: 108px;
+              width: 180px;
+              border: 2px solid #c8d6e5;
+              border-radius: 20px;
+              .earning-per-month--title {
+                .earning-per-month__text {
+                  color: #2e86de;
+                  font-weight: bold;
+                  font-size: 12px;
+                }
+              }
+
+              .earning-per-month--amount {
+                .earning-per-month__text {
+                  color: #292929;
+                  font-size: 30px;
+                  font-weight: 600;
+                }
+              }
+            }
+          }
+        }
+
+        .settings-cards {
+          width: 30%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+          margin-top: 0;
+
+          .setting-card {
+            padding: 1rem;
+            margin: 0;
+            margin-bottom: 2rem;
+            background: #fff;
+            width: 226px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            border-radius: 20px;
+
+            .setting-card--media {
+              width: 40%;
+              .setting-card__image {
+                width: 100%;
+                height: 51px;
+                object-fit: contain;
+              }
+            }
+            .special-tus-cursos {
+              position: relative;
+              right: 8px;
+            }
+            .setting-card--title {
+              padding-left: 0.5rem;
+              width: auto;
+              .setting-card__text {
+                color: #707070;
+                font-size: 14px;
+                font-weight: 400;
+              }
+            }
+          }
+        }
+      }
+
+      .row {
+        margin-top: 5rem;
+        max-width: 992px;
+        .row--title {
+          margin-bottom: 2rem;
+          .row__text {
+            color: #4a545e;
+            font-size: 40px;
+          }
+        }
+
+        .news-cards {
+          .news-card {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            .news-card--media {
+              width: 50%;
+              .news-card--media__item {
+                width: 100%;
+              }
+            }
+
+            .news-card-information {
+              width: 50%;
+              .news-card-information--title {
+                margin-bottom: 1rem;
+                .news_card_information__text {
+                  color: #292930;
+                  font-size: 24px;
+                  font-weight: 500;
+                }
+              }
+
+              .news-card-information--description {
+                .news-card-information__text {
+                  color: #292930;
+                  font-size: 14px;
+                  line-height: 22px;
+                  max-width: 375px;
+                }
+              }
+
+              .news-card-button {
+                margin-top: 2rem;
+                .btn {
+                  padding: 1rem 5rem;
+                  background: #fff;
+                  border-radius: 40px;
+                  color: #11142d;
+                  font-weight: bold;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
