@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     },
   },
 });
-const Navbar = () => {
+const Navbar = ({ user }) => {
   const classes = useStyles();
 
   return (
@@ -90,7 +90,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="user-profile-name">
-              <p className="user-profile-name__text">Liliana</p>
+              <p className="user-profile-name__text">{user.name}</p>
               <i class="fas fa-chevron-down"></i>
               <div className="user-profile-dropdown">
                 <div className="user-profile-dropdown-item">
