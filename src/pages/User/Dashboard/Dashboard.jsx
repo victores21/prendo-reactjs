@@ -1,15 +1,15 @@
-import { React } from "react";
+import { React, useState, useEffect } from "react";
 import SideNav, {
   Toggle,
-  Nav,
   NavItem,
   NavIcon,
   NavText,
 } from "@trendmicro/react-sidenav";
+//Custom Styles
 import "./dashboard.scss";
 import "@trendmicro/react-sidenav/dist/react-sidenav.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import "react-multi-carousel/lib/styles.css";
+//Images
 import myCourses from "../../../images/image-option.png";
 import personaliza from "../../../images/personaliza.png";
 import crea from "../../../images/crea.png";
@@ -18,44 +18,31 @@ import videoImage from "../../../images/video.png";
 import calendarSvg from "../../../images/calendar.svg";
 import studentGraph from "../../../images/students.png";
 import earningChart from "../../../images/chart.png";
-import { useEffect } from "react";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
+//CUSTOM ICONS
 import VistaGeneralIcon from "../../../components/VistaGeneralIcon/VistaGeneralIcon";
 import ProgramasCursosIcon from "../../../components/ProgramasCursosIcon/ProgramasCursosIcon";
 import ConfiguracionIcon from "../../../components/ConfiguracionIcon/ConfiguracionIcon";
 import AnaliticaReporteIcon from "../../../components/AnaliticaReporteIcon/AnaliticaReporteIcon";
 import MarketingVentasIcon from "../../../components/MarketingVentasIcon/MarketingVentasIcon";
 import EstudiantesClientesIcon from "../../../components/EstudiantesClientesIcon/EstudiantesClientesIcon";
-
 import DisenaSitiosIcon from "../../../components/DisenaSitioIcon/DisenaSitioIcon";
 import SidebarToggleIcon from "../../../components/SidebarToggleIcon/SidebarToggleIcon";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 
-import IconButton from "@material-ui/core/IconButton";
-import Badge from "@material-ui/core/Badge";
-
-import MailIcon from "../../../components/MailIcon/MailIcon";
-import SearchIcon from "@material-ui/icons/Search";
-import { makeStyles } from "@material-ui/core/styles";
-import BellIcon from "../../../components/BellIcon/BellIcon";
-import CloudIcon from "../../../components/CloudIcon/CloudIcon";
-// import jsonFile from "../../../Api/fakeData/user.json";
+//Fake API DATA
 import { getUserDashboardInformation } from "../../../Api/fakeData/Services/GetUserInformation";
-const useStyles = makeStyles({
-  underline: {
-    "&&&:before": {
-      borderBottom: "none",
-    },
-  },
-});
+
+//Components
+import Navbar from "../../../components/global/Navbar/Navbar";
+import Button from "@material-ui/core/Button";
+import BounceLoader from "react-spinners/BounceLoader";
+import { css } from "@emotion/core";
+
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
 const Dashboard = () => {
   const [user, setUser] = useState("");
   const [date, setDate] = useState("");
@@ -63,9 +50,9 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [widthContent, setWitdhContent] = useState("68px");
   const [isSidebarCollapsed, setIsSidebarCollapse] = useState(true);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const toggleSidebarCollapsible = () => {
-    console.log("EPALE");
-    console.log(isSidebarCollapsed);
+    setWindowWidth(window.innerWidth);
     if (isSidebarCollapsed) {
       setWitdhContent("240px");
 
@@ -75,26 +62,6 @@ const Dashboard = () => {
       setIsSidebarCollapse(true);
     }
   };
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
-  const classes = useStyles();
 
   const getDate = () => {
     var today = new Date();
@@ -135,7 +102,9 @@ const Dashboard = () => {
   if (loading) {
     return (
       <>
-        <p>Loading...</p>;
+        <div className="loading-page">
+          <BounceLoader css={override} color="#6C5DD3" />
+        </div>
       </>
     );
   } else {
@@ -144,125 +113,14 @@ const Dashboard = () => {
         <div
           className="page-wrappers"
           style={{
-            gridTemplateColumns: `${widthContent} 1fr`,
+            gridTemplateColumns:
+              windowWidth < 1024 ? "68px 1fr" : `${widthContent} 1fr`,
             transition: "1s all ease",
           }}
         >
-          <div className="navbar-component">
-            <div className="search-bar">
-              <div className="search-input-container">
-                <div className="search-input__icon">{/* <p>Icon</p> */}</div>
-                <div className="search-input__textfield">
-                  {/* <input type="text" placeholder="sarch" /> */}
-                  <TextField
-                    id="input-with-icon-textfield"
-                    placeholder="Buscar"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">
-                          <SearchIcon style={{ color: "#8395A7" }} />
-                        </InputAdornment>
-                      ),
-                      classes,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="user-notification">
-              <div className="notification-icons">
-                <div className="notification-card-icon">
-                  <div className="notification-card-icon--icon notification-card-icon__cloud">
-                    {/* <IconButton aria-label="show 4 new mails" color="#8395A7">
-                      <Badge badgeContent={1} color="secondary"> */}
-                    <CloudIcon className="notification-card-icon__cloud" />
-                    {/* </Badge>
-                    </IconButton> */}
-                    {/* <i className="fas fa-bell"></i> */}
-                  </div>
-                </div>
-                <div className="notification-card-icon">
-                  <div className="notification-card-icon--icon notification-card-icon__bell">
-                    {/* <i className="fas fa-bell"></i> */}
-                    {/* <IconButton aria-label="show 4 new mails" color="#8395A7">
-                      <Badge badgeContent={2} color="#10AC84"> */}
-                    <BellIcon />
-                    {/* </Badge>
-                    </IconButton> */}
-                  </div>
-                </div>
-                <div className="notification-card-icon">
-                  <div className="notification-card-icon--icon notification-card-icon__mail">
-                    {/* <i className="fas fa-bell"></i> */}
-                    {/* <IconButton aria-label="show 4 new mails" color="#8395A7">
-                      <Badge badgeContent={3} color="#54A0FF"> */}
-                    <MailIcon />
-                    {/* </Badge> */}
-                    {/* </IconButton> */}
-                  </div>
-                </div>
-              </div>
+          <Navbar user={user} />
 
-              <div className="user-profile">
-                <div className="user-profile-avatar-card">
-                  <div className="user-profile-avatar-card--image">
-                    <img
-                      class="user__image"
-                      src="https://cistitisderepeticion.com/wp-content/uploads/2015/12/sexo-mujer-cistitis-infeccion-urinaria-960x720.jpg"
-                      alt=""
-                    />
-                  </div>
-                </div>
-                <div className="user-profile-name">
-                  <p className="user-profile-name__text">{user.name}</p>
-                  <div className="user-profile-dropdown">
-                    <div className="user-profile-dropdown-item">
-                      <div className="user-profile-dropdown-icon">
-                        <i className="fas fa-bell user-profile-dropdown-icon__icon"></i>
-                      </div>
-                      <div className="user-profile-dropdown-option">
-                        <p className="user-profile-dropdown-option__text">
-                          Mi cuenta
-                        </p>
-                      </div>
-                    </div>
-                    <div className="user-profile-dropdown-item">
-                      <div className="user-profile-dropdown-icon">
-                        <i className="fas fa-bell user-profile-dropdown-icon__icon"></i>
-                      </div>
-                      <div className="user-profile-dropdown-option">
-                        <p className="user-profile-dropdown-option__text">
-                          Mi cuenta
-                        </p>
-                      </div>
-                    </div>
-                    <div className="user-profile-dropdown-item">
-                      <div className="user-profile-dropdown-icon">
-                        <i className="fas fa-bell user-profile-dropdown-icon__icon"></i>
-                      </div>
-                      <div className="user-profile-dropdown-option">
-                        <p className="user-profile-dropdown-option__text">
-                          Mi cuenta
-                        </p>
-                      </div>
-                    </div>
-                    <div className="user-profile-dropdown-item">
-                      <div className="user-profile-dropdown-icon">
-                        <i className="fas fa-bell user-profile-dropdown-icon__icon"></i>
-                      </div>
-                      <div className="user-profile-dropdown-option">
-                        <p className="user-profile-dropdown-option__text">
-                          Mi cuenta
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="sidebar-component">
+          <div className="sidebar-component animate__animated animate__backInLeft">
             <SideNav
               onToggle={() => toggleSidebarCollapsible()}
               onSelect={(selected) => {
@@ -385,16 +243,18 @@ const Dashboard = () => {
           <div className="content-component">
             <div className="content">
               <div className="content-header">
-                <div className="salute">
+                <div className="salute animate__animated animate__backInLeft">
                   <p className="salute__text">
                     ¡Hola {user.short_name} así van tus programas!
                   </p>
                 </div>
                 <div className="content-bottom-header">
                   <div className="content-title">
-                    <p class="content-title__text">Vista General</p>
+                    <p class="content-title__text animate__animated animate__backInLeft">
+                      Vista General
+                    </p>
                   </div>
-                  <div className="calendar-card">
+                  <div className="calendar-card animate__animated animate__backInRight">
                     <div className="calendar-icon">
                       <img
                         className="calendar--image"
@@ -418,7 +278,7 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div className="course-information-cards">
+              <div className="course-information-cards animate__animated animate__backInRight">
                 <div className="left">
                   {/* Card */}
                   <div className="course-information-card">
@@ -493,8 +353,8 @@ const Dashboard = () => {
               </div>
 
               {/* Chart & options */}
-              <div className="earning-options">
-                <div className="earnings-stats">
+              <div className="earning-options ">
+                <div className="earnings-stats animate__animated animate__backInLeft">
                   <div className="earning-stats-header">
                     <h3 className="earning-stats-title__text">
                       Ganancias reportadas
@@ -528,31 +388,50 @@ const Dashboard = () => {
                   </div>
 
                   <div className="earning-per-month">
-                    {/* <Carousel responsive={responsive}>
-                    <div>Item 1</div>
-                    <div>Item 2</div>
-                    <div>Item 3</div>
-                    <div>Item 4</div>
-                    <div>Item 1</div>
-                    <div>Item 2</div>
-                    <div>Item 3</div>
-                    <div>Item 4</div>
-                  </Carousel> */}
+                    <div className="earning-per-month-card">
+                      <div className="earning-per-month--title">
+                        <div className="earning-per-month__text">Octubre</div>
+                      </div>
+
+                      <div className="earning-per-month--amount">
+                        <div className="earning-per-month__text">$629.75</div>
+                      </div>
+                    </div>
+                    <div className="earning-per-month-card">
+                      <div className="earning-per-month--title">
+                        <div className="earning-per-month__text">Octubre</div>
+                      </div>
+
+                      <div className="earning-per-month--amount">
+                        <div className="earning-per-month__text">$629.75</div>
+                      </div>
+                    </div>
+                    <div className="earning-per-month-card">
+                      <div className="earning-per-month--title">
+                        <div className="earning-per-month__text">Octubre</div>
+                      </div>
+
+                      <div className="earning-per-month--amount">
+                        <div className="earning-per-month__text">$629.75</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 <div className="settings-cards">
                   {/* Card */}
-                  <div className="setting-card">
+                  <div className="setting-card animate__animated animate__backInRight">
                     <div className="setting-card--media">
                       <img class="setting-card__image" src={myCourses} alt="" />
                     </div>
+
                     <div className="setting-card--title special-tus-cursos">
                       <p className="setting-card__text">Tus Cursos</p>
                     </div>
                   </div>
+
                   {/* Card */}
-                  <div className="setting-card">
+                  <div className="setting-card animate__animated animate__backInRight">
                     <div className="setting-card--media">
                       <img
                         class="setting-card__image"
@@ -567,7 +446,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   {/* Card */}
-                  <div className="setting-card">
+                  <div className="setting-card animate__animated animate__backInRight">
                     <div className="setting-card--media">
                       <img class="setting-card__image" src={crea} alt="" />
                     </div>
@@ -576,7 +455,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                   {/* Card */}
-                  <div className="setting-card">
+                  <div className="setting-card animate__animated animate__backInRight">
                     <div className="setting-card--media">
                       <img class="setting-card__image" src={conoce} alt="" />
                     </div>
@@ -588,20 +467,20 @@ const Dashboard = () => {
               </div>
 
               <div className="row">
-                <div className="row--title">
+                <div className="row--title animate__animated animate__backInLeft">
                   <h2 className="row__text">Conoce como crear...</h2>
                 </div>
 
                 <div className="news-cards">
                   <div className="news-card">
-                    <div className="news-card--media">
+                    <div className="news-card--media animate__animated animate__backInLeft">
                       <img
                         className="news-card--media__item"
                         src={videoImage}
                         alt=""
                       />
                     </div>
-                    <div className="news-card-information">
+                    <div className="news-card-information animate__animated animate__backInRight">
                       <div className="news-card-information--title">
                         <h3 className="news_card_information__text">
                           Embudos de conversión
@@ -616,9 +495,13 @@ const Dashboard = () => {
                         </p>
                       </div>
                       <div className="news-card-button">
-                        <a href="/" class="btn btn-rounded">
+                        <Button className="btn" variant="contained">
+                          {" "}
                           Inicia ahora
-                        </a>
+                        </Button>
+                        {/* <a href="/" class="btn btn-rounded">
+                          Inicia ahora
+                        </a> */}
                       </div>
                     </div>
                   </div>

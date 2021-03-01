@@ -43,6 +43,12 @@ img {
 body {
   background: #f4f5f7;
 }
+.loading-page {
+  position: fixed;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+}
 .page-wrappers {
   display: grid;
   grid-template-areas:
@@ -116,7 +122,7 @@ body {
   }
   .sidebar-component {
     grid-area: sidebar;
-
+    z-index: 9999;
     transition: 0.8s ease;
 
     .menu-item--icon__icon {
@@ -142,6 +148,7 @@ body {
     }
     .sidenav---sidenav---_2tBP {
       background: #fff;
+      height: 630px;
     }
     .sidenav---sidenav-nav---3tvij
       > .sidenav---sidenav-navitem---uwIJ-
@@ -240,7 +247,7 @@ body {
               /* width: 50px; */
               position: absolute;
               top: 9px;
-              left: 12px;
+              left: 14px;
               .calendar--day {
                 font-weight: bold;
                 font-size: 22px;
@@ -249,7 +256,7 @@ body {
                 font-weight: bold;
                 font-size: 10px;
                 position: relative;
-                bottom: 12px;
+                bottom: 7px;
               }
             }
           }
@@ -276,6 +283,8 @@ body {
 
     .course-information-cards {
       background: #fff;
+      border-radius: 20px;
+
       .left {
         display: flex;
         .course-information-card {
@@ -358,18 +367,37 @@ body {
             padding: 0 2rem;
             .date {
               text-align: end;
+              .date--title {
+                display: flex;
+                justify-content: flex-end;
+
+                .date__text {
+                  padding-right: 0.5rem;
+                  color: #8899aa;
+                  font-weight: bold;
+                }
+                .fas {
+                  padding-right: 0.5rem;
+                  color: #8899aa;
+                  font-weight: bold;
+                }
+              }
             }
           }
         }
 
         .earning-per-month {
+          display: flex;
+          margin-top: 1rem;
           .earning-per-month-card {
             padding: 1rem;
             height: 108px;
             width: 180px;
             border: 2px solid #c8d6e5;
             border-radius: 20px;
+            margin: 0 0.5rem;
             .earning-per-month--title {
+              padding-bottom: 0.7rem;
               .earning-per-month__text {
                 color: #2e86de;
                 font-weight: bold;
@@ -551,7 +579,7 @@ body {
                   font-weight: bold;
                   font-size: 10px;
                   position: relative;
-                  bottom: 12px;
+                  bottom: 7px;
                 }
               }
             }
@@ -648,9 +676,11 @@ body {
         display: flex;
         max-width: 992px;
         .earnings-stats {
-          width: 70%;
-          padding: 2rem;
+          width: 80%;
+          padding: 5rem 2rem;
           background: #fff;
+          border-radius: 20px;
+
           .earning-stats-header {
             padding-bottom: 1.5rem;
             .earning-stats-title__text {
@@ -662,10 +692,10 @@ body {
           .earning-main-content {
             display: flex;
             .earning-amount {
-              width: 20%;
+              width: 30%;
               position: relative;
               .earning-amount__text {
-                font-size: 35px;
+                font-size: 40px;
                 color: #222f3e;
               }
               .earning-amount__helper {
@@ -729,7 +759,11 @@ body {
             display: flex;
             align-items: center;
             border-radius: 20px;
-
+            transition: 0.5s;
+            cursor: pointer;
+            &:hover {
+              box-shadow: #e9e9e9 0px 20px 20px 0px;
+            }
             .setting-card--media {
               width: 40%;
               .setting-card__image {
