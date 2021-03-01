@@ -1,21 +1,30 @@
 import { React, useState } from "react";
+//Images
 import logo from "../../images/Foto.png";
+import slider2 from "../../images/slider-2.png";
+import slider3 from "../../images/slider-3.png";
+import slider4 from "../../images/slider-4.png";
+//Custom Styles
 import "../Login/Login.scss";
+
+//Material UI
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import IconButton from "@material-ui/core/IconButton";
 import OutlinedInput from "@material-ui/core/OutlinedInput";
-
 import InputLabel from "@material-ui/core/InputLabel";
 import InputAdornment from "@material-ui/core/InputAdornment";
-
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
-import googleIcon from "../../images/google-icon.svg";
 
+//CUSTOM ICONS
+import googleIcon from "../../images/google-icon.svg";
 import EyeOpenIcon from "../../components/EyeOpenIcon/EyeOpenIcon";
 import EyeClosedIcon from "../../components/EyeClosedIcon/EyeClosedIcon";
+
+//React Router DOM
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   inputClass: {
@@ -36,6 +45,7 @@ const Login = () => {
   });
   const [isEmailValid, setIsEmailValid] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState("");
+  const [isFormValidated, setIsFormValidated] = useState(false);
 
   const handleChange = (prop) => (event) => {
     setFormInformation({ ...formInformation, [prop]: event.target.value });
@@ -68,28 +78,60 @@ const Login = () => {
       setIsPasswordValid(false);
     }
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     handlePasswordValid();
     handleEmailValid();
 
     //MOCK USER LOGIN
-
     if (
       formInformation.email === "admin@admin.com" &&
       formInformation.password === "123456"
     ) {
       console.log("yes");
+      setIsFormValidated(true);
     }
   };
+
+  if (isFormValidated) {
+    return <Redirect to="/dashboard" />;
+  }
   return (
     <>
       <div className="login-container">
         <div className="hero">
-          <div className="hero-left">
-            <img className="hero-left__image" src={logo} alt="" />
+          <div className="hero-left animate__animated animate__backInLeft">
+            <div class="CSSgal">
+              <s id="s1"></s>
+              <s id="s2"></s>
+              <s id="s3"></s>
+              <s id="s4"></s>
+
+              <div class="slider">
+                <div>
+                  <img className="hero-left__image" src={logo} alt="" />
+                </div>
+                <div>
+                  <img className="hero-left__image" src={slider2} alt="" />
+                </div>
+                <div>
+                  <img className="hero-left__image" src={slider3} alt="" />
+                </div>
+                <div>
+                  <img className="hero-left__image" src={slider4} alt="" />
+                </div>
+              </div>
+
+              <div class="bullets">
+                <a href="#s1"></a>
+                <a href="#s2"></a>
+                <a href="#s3"></a>
+                <a href="#s4"></a>
+              </div>
+            </div>
           </div>
-          <div className="hero-right">
+          <div className="hero-right animate__animated animate__backInRight">
             <form>
               <div className="row">
                 <div className="hero-right__title">
