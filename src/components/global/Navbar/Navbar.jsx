@@ -27,9 +27,8 @@ const Navbar = ({ user }) => {
       <div className="navbar-component animate__animated animate__backInDown">
         <div className="search-bar">
           <div className="search-input-container">
-            <div className="search-input__icon">{/* <p>Icon</p> */}</div>
+            <div className="search-input__icon"></div>
             <div className="search-input__textfield">
-              {/* <input type="text" placeholder="sarch" /> */}
               <TextField
                 id="input-with-icon-textfield"
                 placeholder="Buscar"
@@ -49,32 +48,17 @@ const Navbar = ({ user }) => {
           <div className="notification-icons">
             <div className="notification-card-icon">
               <div className="notification-card-icon--icon notification-card-icon__cloud">
-                {/* <IconButton aria-label="show 4 new mails" color="#8395A7">
-                      <Badge badgeContent={1} color="secondary"> */}
                 <CloudIcon className="notification-card-icon__cloud" />
-                {/* </Badge>
-                    </IconButton> */}
-                {/* <i className="fas fa-bell"></i> */}
               </div>
             </div>
             <div className="notification-card-icon">
               <div className="notification-card-icon--icon notification-card-icon__bell">
-                {/* <i className="fas fa-bell"></i> */}
-                {/* <IconButton aria-label="show 4 new mails" color="#8395A7">
-                      <Badge badgeContent={2} color="#10AC84"> */}
                 <BellIcon />
-                {/* </Badge>
-                    </IconButton> */}
               </div>
             </div>
             <div className="notification-card-icon">
               <div className="notification-card-icon--icon notification-card-icon__mail">
-                {/* <i className="fas fa-bell"></i> */}
-                {/* <IconButton aria-label="show 4 new mails" color="#8395A7">
-                      <Badge badgeContent={3} color="#54A0FF"> */}
                 <MailIcon />
-                {/* </Badge> */}
-                {/* </IconButton> */}
               </div>
             </div>
           </div>
